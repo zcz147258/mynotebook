@@ -643,25 +643,27 @@ var person1 = new Person("谢广坤", 180);
      ```
 
 in   关键字用来检查一个属性是否属于一个对象
-       name in obj
-     ```
-     
-     ```javascript
-     这样就导致了构造函数执行一次就会创建一个新的方法，执行一万次就创建一万个方法，
-     最重要的是这些方法做的事都是一样的
-     那我们可以让所有对象 共享这个方法 这样就没必要创建多个方法了
-     function Person(name, age){
-         this.name = name;
-         this.age = age;
-         this.sayName = sayName;  ******
-     }
-     function sayName(){
-         console.log(this.name);
-     }
-     var person1 = new Person("谢广坤", 180);
-     我把sayName方法定义在了全局作用域中 这样的话就只有一个函数
+​       name in obj
+​     ```
+​     
+~~~js
+ ```javascript
+ 这样就导致了构造函数执行一次就会创建一个新的方法，执行一万次就创建一万个方法，
+ 最重要的是这些方法做的事都是一样的
+ 那我们可以让所有对象 共享这个方法 这样就没必要创建多个方法了
+ function Person(name, age){
+     this.name = name;
+     this.age = age;
+     this.sayName = sayName;  ******
+ }
+ function sayName(){
+     console.log(this.name);
+ }
+ var person1 = new Person("谢广坤", 180);
+ 我把sayName方法定义在了全局作用域中 这样的话就只有一个函数
+~~~
 我们每个对象只需要去调用公共的函数就OK了 
-     但是我们把函数定义在全局作用域中 会污染我们的命名空间
+​     但是我们把函数定义在全局作用域中 会污染我们的命名空间
 
 ##      10.4 原型
 
@@ -766,7 +768,7 @@ new  关键字的作用
 
 console.dir()查看详情信息
 
-```
+```js
 相同点
   都可以改变函数内得this指向，第一个参数为改变成那个对象
 不同点
@@ -777,7 +779,7 @@ console.dir()查看详情信息
 
 ## 10.6 arguments
 
-```
+```js
 在调用函数时，浏览器会传入两个隐藏的参数：
 	1. this
 	2. arguments
@@ -806,7 +808,7 @@ deleterepeat(1,3,2,4,5,9,8,7,6,4,2,5);
 
 ## 10.7 拷贝
 
-```
+```js
 浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。
 但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。
 
@@ -836,7 +838,7 @@ var b = a;
 
 ## 10.8 继承
 
-```
+```js
 1.原型链继承
 继承的本质就是复制，即重写原型对象，代之以一个新类型的实例。
 原型链方案存在的缺点：多个实例对引用类型的操作会被篡改。
@@ -967,7 +969,7 @@ extends关键字主要用于类声明或者类表达式中，以创建一个类�
 
 ## 10.9 垃圾回收机制
 
-```
+```js
 程序运行过程中会产生垃圾
 	这些垃圾积攒过多以后，会导致程序运行的速度过慢，
     所以我们需要一个垃圾回收的机制，来处理程序运行过程中产生的垃圾
@@ -995,7 +997,7 @@ js中最常用的垃圾回收方式就是标记清除。当变量进入环境时
 
 ## 10.10闭包
 
-```
+```js
 函数内部的不用关键字声明的变量 会被提升到全局变量  叫做隐式全局变量
 
 只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成"定义在一个函数内部的函数"。
@@ -1034,88 +1036,88 @@ console.log(new Date, i);
 
 ​     
 
-```
+```js
         数组的存储性能比普通对象要好，在开发中我们经常使用数组来存储一些数据
-​     创建数组对象
+     创建数组对象
 
 
-​    ​     ```javascript
-​     读取数组中的元素
-​     	语法：数组[索引]
-​     	console.log(arr[0]); 10
-​     	console.log(arr[3]); undefined
-​     	如果读取数组中不存在的元素，不会报错，而会返回undefined
-​     获取数组的长度
-​     利用length属性 向数组最后一位添加一个新元素
-​     	语法：数组[数组.length] = 新值
-​     	arr[arr.length] = 33;
-​    console.log(arr); [10,20,33]
-​     
+    
+     读取数组中的元素
+     	语法：数组[索引]
+     	console.log(arr[0]); 10
+     	console.log(arr[3]); undefined
+     	如果读取数组中不存在的元素，不会报错，而会返回undefined
+     获取数组的长度
+     利用length属性 向数组最后一位添加一个新元素
+     	语法：数组[数组.length] = 新值
+     	arr[arr.length] = 33;
+    console.log(arr); [10,20,33]
+     
 
 
-​     使用构造函数创建数组时，也可以同时添加元素，将要写的元素写在实参中
-​     var arr = new Array(1,2,3,4);
-​     console.log(arr); [1,2,3,4];
-​     当你在实参中只写一个数字的时候代表创建一个长度为多少的数组
-​     var arr = new Array(10);
-​     console.log(arr.length); 10
-​     数组中的元素可以是任意的数据类型
-​     var arr = [1,"a",true,null,undefined,{},[1,2,3]];
-​     二维数组就是数组套数组
+     使用构造函数创建数组时，也可以同时添加元素，将要写的元素写在实参中
+     var arr = new Array(1,2,3,4);
+     console.log(arr); [1,2,3,4];
+     当你在实参中只写一个数字的时候代表创建一个长度为多少的数组
+     var arr = new Array(10);
+     console.log(arr.length); 10
+     数组中的元素可以是任意的数据类型
+     var arr = [1,"a",true,null,undefined,{},[1,2,3]];
+     二维数组就是数组套数组
 
 
 
 	var arr = ["刘能","赵四","谢广坤"];
-​     push方法 向数组的最后一位添加一个或多个新的元素，并返回数组的长度
-​     var result = arr.push("宋小宝","小沈阳","小沈龙");
-​     console.log(arr); ["刘能","赵四","谢广坤","宋小宝","小沈阳","小沈龙"]
-​     push方法有返回值 返回新的长度
-​     console.log(result); 6
-​     
-​     pop方法 可以删除数组的最后一位并返回它
-​     var result = arr.pop();
-​     console.log(arr); ["刘能","赵四","谢广坤","宋小宝","小沈阳"]
-​     console.log(result); "小沈龙"
-​     
-​     unshift方法 向数组的第一位添加一个或者多个新元素 并返回新的数组长度
-​     var result = arr.unshift("王宝强");
-​     console.log(arr); ["王宝强","刘能","赵四","谢广坤","宋小宝","小沈阳"]
-​     console.log(result); 6
-​     向第一位添加完新元素以后，后面的元素的索引会被改变
-​     
-​     shift方法 删除数组第一位的元素，并返回它
-​     var result = arr.shift();
-​     console.log(arr); ["刘能","赵四","谢广坤","宋小宝","小沈阳"]
-​     console.log(result); "王宝强"
-​     
-​     sort方法 对数组中的元素进行排序
-​     sort排序是按照 unicode编码进行比较 也就是说会将数组中的值转换为字符串在进行比较 例如：
-​     var arr = ["b","d","t","a",4,3,31,56];
-​     var result = arr.sort();
-​     console.log(result); [3, 31, 4, 56, "a", "b", "d", "t"]
+     push方法 向数组的最后一位添加一个或多个新的元素，并返回数组的长度
+     var result = arr.push("宋小宝","小沈阳","小沈龙");
+     console.log(arr); ["刘能","赵四","谢广坤","宋小宝","小沈阳","小沈龙"]
+     push方法有返回值 返回新的长度
+     console.log(result); 6
+     
+     pop方法 可以删除数组的最后一位并返回它
+     var result = arr.pop();
+     console.log(arr); ["刘能","赵四","谢广坤","宋小宝","小沈阳"]
+     console.log(result); "小沈龙"
+     
+     unshift方法 向数组的第一位添加一个或者多个新元素 并返回新的数组长度
+     var result = arr.unshift("王宝强");
+     console.log(arr); ["王宝强","刘能","赵四","谢广坤","宋小宝","小沈阳"]
+     console.log(result); 6
+     向第一位添加完新元素以后，后面的元素的索引会被改变
+     
+     shift方法 删除数组第一位的元素，并返回它
+     var result = arr.shift();
+     console.log(arr); ["刘能","赵四","谢广坤","宋小宝","小沈阳"]
+     console.log(result); "王宝强"
+     
+     sort方法 对数组中的元素进行排序
+     sort排序是按照 unicode编码进行比较 也就是说会将数组中的值转换为字符串在进行比较 例如：
+     var arr = ["b","d","t","a",4,3,31,56];
+     var result = arr.sort();
+     console.log(result); [3, 31, 4, 56, "a", "b", "d", "t"]
 ```
 
 11. ## 1函数arguments
 
-```
+```js
   数组去重！！！
-​      var b = [];
-​             var a = [1,1,3,1,2,5,5,6,8,6,9,8,5];
-​             for(var i = 0; i < a.length; i++){
-​                 var flag=true;
-​
-​                 if(flag){
-​                     b.push(a[i]);
-​                 }
-​             }
-​             console.log(b);
-​     ```
-​     
+      var b = [];
+             var a = [1,1,3,1,2,5,5,6,8,6,9,8,5];
+             for(var i = 0; i < a.length; i++){
+                 var flag=true;
+
+                 if(flag){
+                     b.push(a[i]);
+                 }
+             }
+             console.log(b);
+```
+
 调用函数时，浏览器会传入两个隐藏的参数：
-	1. this
-	2. arguments
+​	1. this
+​	2. arguments
 function fn(){
-    console.log(arguments);
+​    console.log(arguments);
 }
 fn();
 arguments 是一个类数组对象 它不是数组 但是它也可以通过索引来操作数据，也可以获取长度
@@ -1126,13 +1128,13 @@ arguments 的length属性就是用来获取实参的长度
 
 利用argument进行数组去重
 function deleterepeat(){
-    var b = [];
-    for (var i = 0; i < arguments.length; i++) {
-        if(b.indexOf(arguments[i]) == -1){
-            b.push(arguments[i]);
-        }
-    }
-    console.log(b);
+​    var b = [];
+​    for (var i = 0; i < arguments.length; i++) {
+​        if(b.indexOf(arguments[i]) == -1){
+​            b.push(arguments[i]);
+​        }
+​    }
+​    console.log(b);
 }
 deleterepeat(1,3,2,4,5,9,8,7,6,4,2,5);
 ```
@@ -1141,14 +1143,16 @@ deleterepeat(1,3,2,4,5,9,8,7,6,4,2,5);
 
 ​     
 
-     ```javascript
-      var str = "http://baidu.com";
-                 console.log(str.indexOf(":"))
-                 console.log(str.replace("http","hppt"))
-                 console.log(str.charAt(5))
-                 console.log(str.split(":"))
-                 console.log(str.substring(5,8))
-                 console.log(str.substr(5,3))
+~~~js
+ ```javascript
+  var str = "http://baidu.com";
+             console.log(str.indexOf(":"))
+             console.log(str.replace("http","hppt"))
+             console.log(str.charAt(5))
+             console.log(str.split(":"))
+             console.log(str.substring(5,8))
+             console.log(str.substr(5,3))
+~~~
 
 
 ​     
@@ -1156,20 +1160,20 @@ deleterepeat(1,3,2,4,5,9,8,7,6,4,2,5);
 
 ​    
 
-```
+​```js
      字符串处理
-​                var str = "https://www.baidu.com/s?wd=sadasdasdas&rsv_spt=1&rsv_iqid=0x90a7a1050001e1c7&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=1&rsv_dl=tb&oq=%25E5%25AD%2597%25E8%25B0%259Csadasdasdas&inputT=768&rsv_t=c658E9CKHnumxQM9j%2BCIJVAbT5njVj3fdwmash6aoWtb1xKLR9glkhYdZtOxIN2s8ncg&rsv_pq=c32234aa0000c137&rsv_sug3=21&rsv_sug1=6&rsv_sug7=000&rsv_sug2=0&rsv_sug4=852&rsv_sug=1";
-​                 var result = str.indexOf("?") + 1;
-​                 var obj={};
-​                 result = str.substring(result);
-​                 result = result.split("&");
-​                 for(i=0;i<result.length;i++){
-​                     // console.log(result[i])
-​                     var a = result[i].split("=");
-​                     // console.log(a);
-​                     obj[a[0]] = a[1];
-​                 }
-​                 console.log(obj);
+                var str = "https://www.baidu.com/s?wd=sadasdasdas&rsv_spt=1&rsv_iqid=0x90a7a1050001e1c7&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=1&rsv_dl=tb&oq=%25E5%25AD%2597%25E8%25B0%259Csadasdasdas&inputT=768&rsv_t=c658E9CKHnumxQM9j%2BCIJVAbT5njVj3fdwmash6aoWtb1xKLR9glkhYdZtOxIN2s8ncg&rsv_pq=c32234aa0000c137&rsv_sug3=21&rsv_sug1=6&rsv_sug7=000&rsv_sug2=0&rsv_sug4=852&rsv_sug=1";
+                 var result = str.indexOf("?") + 1;
+                 var obj={};
+                 result = str.substring(result);
+                 result = result.split("&");
+                 for(i=0;i<result.length;i++){
+                     // console.log(result[i])
+                     var a = result[i].split("=");
+                     // console.log(a);
+                     obj[a[0]] = a[1];
+                 }
+                 console.log(obj);
 ```
 
 
@@ -1245,7 +1249,7 @@ deleterepeat(1,3,2,4,5,9,8,7,6,4,2,5);
 
 ##      13.1查找节点
 
-```
+```js
 // DOM节点的查找属性
 Node.parentNode   找他父级节点
 Node.children   找所有子级节点    Node.childNodes  高版本浏览器会获取到文本节点  IE中获取的就是Node节点
@@ -1279,64 +1283,66 @@ Node.lastElementChild 查找最后一个子级节点 Node.lastChild IE的
      	setAttribute(); 设置自定义属性 第一个实参代表属性名 第二个实参代表属性值
      	getAttribute();	获取自定义属性 实参就是 属性名
 
-```
+```js
      排他*********************************
      
      
-​         用来实现 点击后取消另一个点击效果
-​                 <script>
-​                 window.onload = function (){
-​                     var a = document.getElementsByTagName("li");
-​                     for( i = 0; i < a.length; i++){
-​                         a[i].onclick = function() {
-​                             for(j = 0; j < a.length; j++){
-​                             a[j].style = "";
-​                              }
-​                             this.style = "background-color:black;color:white;"
-​                         }
-​                     }
-​                 }
-​                 </script>
-​     
+         用来实现 点击后取消另一个点击效果
+                 <script>
+                 window.onload = function (){
+                     var a = document.getElementsByTagName("li");
+                     for( i = 0; i < a.length; i++){
+                         a[i].onclick = function() {
+                             for(j = 0; j < a.length; j++){
+                             a[j].style = "";
+                              }
+                             this.style = "background-color:black;color:white;"
+                         }
+                     }
+                 }
+                 </script>
+     
 
 ```
 
 ## 13.2排他的具体实现
 
-             实现 哔哩哔哩 的栏目 周一到周日
-         window.onload = function (){
-                         var banner = document.getElementById("banner");
-                         var a = banner.getElementsByTagName("li");
-                         var arr = ['最新','一','二','三','四','五','六','日'];
-                         for( i = 0; i < a.length; i++){
-                             a[i].onclick = function() {
-                                 var b = this.getElementsByTagName("span");
-                                 var c = this.getElementsByTagName("div");
-                                 for(j = 0; j < a.length; j++){
-                                 a[j].className = "";
-                                 a[j].style = "";
-                                 a[j].getElementsByTagName("div")[0].style = "display:none;"
-                                 a[j].getElementsByTagName("span")[0].innerText = arr[j];
-                                  }
-                                 this.className = "triangle";
-                                 this.style = "background-color:white;color:#00a1d6;border-bottom: 1px solid #00a1d6;"
-                                 c[0].style = "display:block";
-                                 b[0].innerText = '周'+b[0].innerText;
-                                 a[0].getElementsByTagName("span")[0].innerText = arr[0];
-                             }
+```js
+         实现 哔哩哔哩 的栏目 周一到周日
+     window.onload = function (){
+                     var banner = document.getElementById("banner");
+                     var a = banner.getElementsByTagName("li");
+                     var arr = ['最新','一','二','三','四','五','六','日'];
+                     for( i = 0; i < a.length; i++){
+                         a[i].onclick = function() {
+                             var b = this.getElementsByTagName("span");
+                             var c = this.getElementsByTagName("div");
+                             for(j = 0; j < a.length; j++){
+                             a[j].className = "";
+                             a[j].style = "";
+                             a[j].getElementsByTagName("div")[0].style = "display:none;"
+                             a[j].getElementsByTagName("span")[0].innerText = arr[j];
+                              }
+                             this.className = "triangle";
+                             this.style = "background-color:white;color:#00a1d6;border-bottom: 1px solid #00a1d6;"
+                             c[0].style = "display:block";
+                             b[0].innerText = '周'+b[0].innerText;
+                             a[0].getElementsByTagName("span")[0].innerText = arr[0];
                          }
                      }
-         onmouseover(){
-    }
-     鼠标移入
-     onmouseout(){
-         
-     }
-     鼠标移出
+                 }
+     onmouseover(){
+}
+ 鼠标移入
+ onmouseout(){
+     
+ }
+ 鼠标移出
+```
 
 ## 13.3DOM节点下面的事件
 
-```
+```js
 onclick   单击事件
 onmouseover   鼠标移上事件    触碰到子级也会触发一次
 onmouseout    鼠标移出事件    触碰到子级也会触发一次
@@ -1358,7 +1364,7 @@ onkeypress    键盘按下事件
 ## 13.4Dom节点下面的属性
 
 
-```
+```js
 nodeName  返回大写的标签名
 nodeType  返回节点类型    1 Element  2 属性  3 text  9 document
 nodeValue 返回节点的值   Node节点的nodeValue返回null  文本节点返回文本内容
@@ -1376,7 +1382,7 @@ Node.getAttribute('属性名')   获取属性值
 
 ##     13.5表单元素属性
 
-```
+```js
 // 表单元素属性
 type      可读写input的类型
 disabled  true 禁用 false 开启
@@ -1386,26 +1392,28 @@ placeholder 可读写文本占位符
 
 
 
-     一般不要使用
-     Node.childNodes;    // 查询子节点 会获取到文本节点 不会找子孙
-     Node.firstChild;    // 获取该元素的第一个子节点 会获取到文本节点
-     Node.lastChild;     // 获取该元素的最后个子节点 会获取到文本节点
-     Node.children;  // 查找改元素的子级元素节点 不会去找子孙级元素
-     Node.firstElementChild; // 查询第一个子元素节点
-     Node.lastElementChild;  // 查询最后一个子元素节点
-     Node.parentNode;    // 查询改元素的父级节点
-     ​
-     查找兄弟节点
-     Node.nextElementSibling;    // 查找后一个兄弟节点
-     Node.previousElementSibling;    // 查找前一个兄弟节点
-     查找父级节点
-     Node.parentNode;   寻找一个元素的父亲节点；
+```js
+ 一般不要使用
+ Node.childNodes;    // 查询子节点 会获取到文本节点 不会找子孙
+ Node.firstChild;    // 获取该元素的第一个子节点 会获取到文本节点
+ Node.lastChild;     // 获取该元素的最后个子节点 会获取到文本节点
+ Node.children;  // 查找改元素的子级元素节点 不会去找子孙级元素
+ Node.firstElementChild; // 查询第一个子元素节点
+ Node.lastElementChild;  // 查询最后一个子元素节点
+ Node.parentNode;    // 查询改元素的父级节点
+ 
+ 查找兄弟节点
+ Node.nextElementSibling;    // 查找后一个兄弟节点
+ Node.previousElementSibling;    // 查找前一个兄弟节点
+ 查找父级节点
+ Node.parentNode;   寻找一个元素的父亲节点；
+```
 
 ##     13.6节点的增加删除替换
 
    
 
-```
+```js
 // DOM的增删改  方法
 创造一个标签
 document.createElement()
@@ -1425,10 +1433,10 @@ Node.replaceChild(新元素, 替换目标)
 
 ## 13.7事件委托
 
-```
+```js
 ###### 将子级的事件委托给父级去做
 
-​	优点：
+	优点：
 
 1。解决了动态添加元素无法绑定事件
 
@@ -1439,32 +1447,32 @@ Node.replaceChild(新元素, 替换目标)
 3this 指向被破坏， 解决方法为 利用事件对象下的target属性当做this
 
 ///////事件委托  运用 target
-​     			var body = queryselect("tbody");
-​     			body.onclick = function(events){
-​     				var tar = events.target;
-​     				if(tar.children[0] == undefined && tar.nodeName.toLocaleLowerCase() == "td"){
-​     					var input = document.createElement("input");
-​     					input.type = "text";
-​     					input.value = tar.innerText;
-​     					input.className = "form-control";
-​     					tar.innerText = "";
-​     					tar.appendChild(input);
-​     					input.focus();
-​     					input.onblur=function(){
-​     						tar.innerText = this.value;
-​     					}
-​     				}
-​     				else if(tar.className == "btn btn-success"){
-​     					alert("你已经提交成功，请下次再来");
-​     				}
-​     				else if(tar.className == "btn btn-primary"){
-​     					queryselect("tbody").removeChild(tar.parentNode.parentNode)
-​     				}else if(tar.className == "btn btn-info"){
-​     					var clone = queryselect("#clone").cloneNode(true);
-​     					clone.id ='';
-​     					queryselect("tbody").insertBefore(clone,tar.parentNode.parentNode);
-​     				}
-​     			}
+     			var body = queryselect("tbody");
+     			body.onclick = function(events){
+     				var tar = events.target;
+     				if(tar.children[0] == undefined && tar.nodeName.toLocaleLowerCase() == "td"){
+     					var input = document.createElement("input");
+     					input.type = "text";
+     					input.value = tar.innerText;
+     					input.className = "form-control";
+     					tar.innerText = "";
+     					tar.appendChild(input);
+     					input.focus();
+     					input.onblur=function(){
+     						tar.innerText = this.value;
+     					}
+     				}
+     				else if(tar.className == "btn btn-success"){
+     					alert("你已经提交成功，请下次再来");
+     				}
+     				else if(tar.className == "btn btn-primary"){
+     					queryselect("tbody").removeChild(tar.parentNode.parentNode)
+     				}else if(tar.className == "btn btn-info"){
+     					var clone = queryselect("#clone").cloneNode(true);
+     					clone.id ='';
+     					queryselect("tbody").insertBefore(clone,tar.parentNode.parentNode);
+     				}
+     			}
 ```
 
 ## 13.8函数节流
@@ -1472,30 +1480,30 @@ Node.replaceChild(新元素, 替换目标)
 
 ```javascript
 
-​     轮播图   
+     轮播图   
    
-​     函数节流  可以用来控制定时器之内 不能在进行点击 定时器运行完了之后才可以进行 点击函数
+     函数节流  可以用来控制定时器之内 不能在进行点击 定时器运行完了之后才可以进行 点击函数
 
-​     响应函数  onclick() 
-​     		focus()
-​     		onblur()
-​     		onmouseover()鼠标移上 受子集影响
-​     		onmouseout()鼠标移出  受子集影响
-​     		onmouseleave()鼠标离开   不会受自己影响
-​     		onmouseenter()鼠标进入   不会受自己影响
-​           
-​       ul.onmouseenter=function(){
-​     			clearInterval(time1);
-​     		}
-​     		ul.onmouseleave =function(){
-​     			autoChange();
-​     		}
+     响应函数  onclick() 
+     		focus()
+     		onblur()
+     		onmouseover()鼠标移上 受子集影响
+     		onmouseout()鼠标移出  受子集影响
+     		onmouseleave()鼠标离开   不会受自己影响
+     		onmouseenter()鼠标进入   不会受自己影响
+           
+       ul.onmouseenter=function(){
+     			clearInterval(time1);
+     		}
+     		ul.onmouseleave =function(){
+     			autoChange();
+     		}
 键盘的事件
 ```
 
 ## 13.9事件对象
 
-```
+```js
 所有的事件处理函数中，都有一个参数event，这个event就是事件对象
 事件对象获取兼容：形参event 可以直接获取  google   window.event IE
 常用的事件对象下的属性有：
@@ -1556,7 +1564,7 @@ deltaY  谷歌浏览器
 
 wheelDelta   ie浏览器的兼容  取消浏览器冒泡  cancelbubble;
 
-```
+```js
 if(document.addEventListener){
 			wheel.addEventListener('DOMMouseScroll',function(e){
 				var e = e || window.events;
@@ -1611,7 +1619,7 @@ if (!document.getElementsByClassName) {
 1.    document.addEventListener('DOMMouseScroll',scrollFunc,false); 
 
 2. ```javascript
-   	wheel.onmousewheel = function(e){
+    wheel.onmousewheel = function(e){
       			var e = e || window.events;
       			var direcition = e.deltaY > 0 ? 'left' : 'right';
       			move(direcition);
@@ -1629,6 +1637,7 @@ if (!document.getElementsByClassName) {
            ul.style.left = -parseInt(slide.style.left)/(linewidth - slidewidth) * ulleft + 'px';
       
       		}
+    ```
    ```
 
    ## 13.14 定时器
@@ -1671,35 +1680,35 @@ if (!document.getElementsByClassName) {
     [^adgk] 查找给定集合外的任何字符
 
 
-​    
-​    量词
-​    
-​    +  匹配任何至少含有一个n的字符串
-​    
-​    * 匹配任何包含0或多个的字符串
-​      ？  破配包含0个或一个的字符串
-​      {x}   包含x个n的序列的字符串
-​      {x,y}  包含x到y个序列的字符串
-​    
-​      n{x,}  	匹配包含至少X个n的序列的字符串
-​      ^  匹配以任何开头为n的字符串
-​      $  匹配以任何结尾的字符串
-​      ？=n  匹配紧随其后指定n的字符串
-​      ?!n   匹配任何后没有紧随字符串n的字符串
+    
+    量词
+    
+    +  匹配任何至少含有一个n的字符串
+    
+    * 匹配任何包含0或多个的字符串
+      ？  破配包含0个或一个的字符串
+      {x}   包含x个n的序列的字符串
+      {x,y}  包含x到y个序列的字符串
+    
+      n{x,}  	匹配包含至少X个n的序列的字符串
+      ^  匹配以任何开头为n的字符串
+      $  匹配以任何结尾的字符串
+      ？=n  匹配紧随其后指定n的字符串
+      ?!n   匹配任何后没有紧随字符串n的字符串
 
 
-​    
-​    
-​    元字符  指的是拥有特殊含义的字符
-​    
-​    .        除了换行符以外任意字符
-​    \w       字母、数字、下划线
-​    \W       非字母、数字、下划线
-​    \d       数字
-​    \D       非数字
-​    \s       空格
-​    \S       非空格
-​    [\u4e00-\u9fa5] 所有中文
+    
+    
+    元字符  指的是拥有特殊含义的字符
+    
+    .        除了换行符以外任意字符
+    \w       字母、数字、下划线
+    \W       非字母、数字、下划线
+    \d       数字
+    \D       非数字
+    \s       空格
+    \S       非空格
+    [\u4e00-\u9fa5] 所有中文
 
 
     [u4e00-u9fa5]   中文字符
@@ -1725,54 +1734,54 @@ if (!document.getElementsByClassName) {
     浮点数：^(-?d+)(.d+)?$ 或 ^-?([1-9]d*.d*|0.d*[1-9]d*|0?.0+|0)$
 
 
-​    
-​      汉字：^[一-龥]{0,}$
-​    ​    英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$
-​    ​    长度为3-20的所有字符：^.{3,20}$
-​    ​    由26个英文字母组成的字符串：^[A-Za-z]+$
-​    ​    由26个大写英文字母组成的字符串：^[A-Z]+$
-​    ​    由26个小写英文字母组成的字符串：^[a-z]+$
-​    ​    由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$
-​    ​    由数字、26个英文字母或者下划线组成的字符串：^w+$ 或 ^w{3,20}$
-​    ​    中文、英文、数字包括下划线：^[一-龥A-Za-z0-9_]+$
-​    ​    中文、英文、数字但不包括下划线等符号：^[一-龥A-Za-z0-9]+$ 或 ^[一-龥A-Za-z0-9]{2,20}$
-​    ​    可以输入含有^%&’,;=?$”等字符：[^%&',;=?$"]+
-​    ​    禁止输入含有~的字符：[^~"]+
-​    
-​        Email地址：^w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*$
-​    ​    域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?
-​    ​    InternetURL：[a-zA-z]+://[^s]* 或 ^http://([w-]+.)+[w-]+(/[w-./?%&=]*)?$
-​    ​    手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])d{8}$
-​    ​    电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：^($$d{3,4}-)|d{3.4}-)?d{7,8}$
-​    ​    国内电话号码(0511-4405222、021-87888822)：d{3}-d{8}|d{4}-d{7}
-​    ​    身份证号(15位、18位数字)：^d{15}|d{18}$
-​    ​    短身份证号码(数字、字母x结尾)：^([0-9]){7,18}(x|X)?$ 或 ^d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$
-​    ​    帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$
-​    ​    密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]w{5,17}$
-​    ​    强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$
-​    ​    日期格式：^d{4}-d{1,2}-d{1,2}
-​    ​    一年的12个月(01～09和1～12)：^(0?[1-9]|1[0-2])$
-​    ​    一个月的31天(01～09和1～31)：^((0?[1-9])|((1|2)[0-9])|30|31)$
-​    ​    钱的输入格式：
-​    ​    有四种钱的表示形式我们可以接受:”10000.00″ 和 “10,000.00″, 和没有 “分” 的 “10000″ 和 “10,000″：^[1-9][0-9]*$
-​    ​    这表示任意一个不以0开头的数字，但是，这也意味着一个字符”0″不通过，所以我们采用下面的形式：^(0|[1-9][0-9]*)$
-​    ​    一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：^(0|-?[1-9][0-9]*)$
-​    ​    这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉，因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：^[0-9]+(.[0-9]+)?$
-​    ​    必须说明的是，小数点后面至少应该有1位数，所以”10.”是不通过的，但是 “10″ 和 “10.2″ 是通过的：^[0-9]+(.[0-9]{2})?$
-​    ​    这样我们规定小数点后面必须有两位，如果你认为太苛刻了，可以这样：^[0-9]+(.[0-9]{1,2})?$
-​    ​    这样就允许用户只写一位小数。下面我们该考虑数字中的逗号了，我们可以这样：^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$
-​    ​    1到3个数字，后面跟着任意个 逗号+3个数字，逗号成为可选，而不是必须：^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$
-​    ​    备注：这就是最终结果了，别忘了”+”可以用”*”替代。如果你觉得空字符串也可以接受的话(奇怪，为什么?)最后，别忘了在用函数时去掉去掉那个反斜杠，一般的错误都在这里
-​    ​    xml文件：^([a-zA-Z]+-?)+[a-zA-Z0-9]+.[x|X][m|M][l|L]$
-​    ​    中文字符的正则表达式：[一-龥]
-​    ​    双字节字符：[^-ÿ] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))
-​    ​    空白行的正则表达式：s* (可以用来删除空白行)
-​    ​    HTML标记的正则表达式：<(S*?)[^>]*>.*?</>|<.*? /> (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)
-​    ​    首尾空白字符的正则表达式：^s*|s*$或(^s*)|(s*$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)
-​    ​    腾讯QQ号：[1-9][0-9]{4,} (腾讯QQ号从10000开始)
-​    ​    中国邮政编码：[1-9]d{5}(?!d) (中国邮政编码为6位数字)
-​    ​    IP地址：d+.d+.d+.d+ (提取IP地址时有用)
-​    ​    IP地址：((?:(?:25[0-5]|2[0-4]d|[01]?d?d).){3}(?:25[0-5]|2[0-4]d|[01]?d?d)) (由@飞龙三少 提供，感谢共享)
+    
+      汉字：^[一-龥]{0,}$
+        英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$
+        长度为3-20的所有字符：^.{3,20}$
+        由26个英文字母组成的字符串：^[A-Za-z]+$
+        由26个大写英文字母组成的字符串：^[A-Z]+$
+        由26个小写英文字母组成的字符串：^[a-z]+$
+        由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$
+        由数字、26个英文字母或者下划线组成的字符串：^w+$ 或 ^w{3,20}$
+        中文、英文、数字包括下划线：^[一-龥A-Za-z0-9_]+$
+        中文、英文、数字但不包括下划线等符号：^[一-龥A-Za-z0-9]+$ 或 ^[一-龥A-Za-z0-9]{2,20}$
+        可以输入含有^%&’,;=?$”等字符：[^%&',;=?$"]+
+        禁止输入含有~的字符：[^~"]+
+    
+        Email地址：^w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*$
+        域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?
+        InternetURL：[a-zA-z]+://[^s]* 或 ^http://([w-]+.)+[w-]+(/[w-./?%&=]*)?$
+        手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])d{8}$
+        电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：^($$d{3,4}-)|d{3.4}-)?d{7,8}$
+        国内电话号码(0511-4405222、021-87888822)：d{3}-d{8}|d{4}-d{7}
+        身份证号(15位、18位数字)：^d{15}|d{18}$
+        短身份证号码(数字、字母x结尾)：^([0-9]){7,18}(x|X)?$ 或 ^d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$
+        帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$
+        密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]w{5,17}$
+        强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$
+        日期格式：^d{4}-d{1,2}-d{1,2}
+        一年的12个月(01～09和1～12)：^(0?[1-9]|1[0-2])$
+        一个月的31天(01～09和1～31)：^((0?[1-9])|((1|2)[0-9])|30|31)$
+        钱的输入格式：
+        有四种钱的表示形式我们可以接受:”10000.00″ 和 “10,000.00″, 和没有 “分” 的 “10000″ 和 “10,000″：^[1-9][0-9]*$
+        这表示任意一个不以0开头的数字，但是，这也意味着一个字符”0″不通过，所以我们采用下面的形式：^(0|[1-9][0-9]*)$
+        一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：^(0|-?[1-9][0-9]*)$
+        这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉，因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：^[0-9]+(.[0-9]+)?$
+        必须说明的是，小数点后面至少应该有1位数，所以”10.”是不通过的，但是 “10″ 和 “10.2″ 是通过的：^[0-9]+(.[0-9]{2})?$
+        这样我们规定小数点后面必须有两位，如果你认为太苛刻了，可以这样：^[0-9]+(.[0-9]{1,2})?$
+        这样就允许用户只写一位小数。下面我们该考虑数字中的逗号了，我们可以这样：^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$
+        1到3个数字，后面跟着任意个 逗号+3个数字，逗号成为可选，而不是必须：^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$
+        备注：这就是最终结果了，别忘了”+”可以用”*”替代。如果你觉得空字符串也可以接受的话(奇怪，为什么?)最后，别忘了在用函数时去掉去掉那个反斜杠，一般的错误都在这里
+        xml文件：^([a-zA-Z]+-?)+[a-zA-Z0-9]+.[x|X][m|M][l|L]$
+        中文字符的正则表达式：[一-龥]
+        双字节字符：[^-ÿ] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))
+        空白行的正则表达式：s* (可以用来删除空白行)
+        HTML标记的正则表达式：<(S*?)[^>]*>.*?</>|<.*? /> (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)
+        首尾空白字符的正则表达式：^s*|s*$或(^s*)|(s*$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)
+        腾讯QQ号：[1-9][0-9]{4,} (腾讯QQ号从10000开始)
+        中国邮政编码：[1-9]d{5}(?!d) (中国邮政编码为6位数字)
+        IP地址：d+.d+.d+.d+ (提取IP地址时有用)
+        IP地址：((?:(?:25[0-5]|2[0-4]d|[01]?d?d).){3}(?:25[0-5]|2[0-4]d|[01]?d?d)) (由@飞龙三少 提供，感谢共享)
 
 
 
@@ -1781,7 +1790,7 @@ if (!document.getElementsByClassName) {
 
 
 
-```
+   ```
 Date对象来表示一个时间
 要用一个对象 就要new 一个实例出来
 var d = new Date();
@@ -2059,17 +2068,17 @@ eq()    获取当前链式操作中第N个jQuery对象，返回jQuery对象，�
 
 ```
 arr.forEach(function(item,index){
-	
+​	
 })
 他总是返回underfined
 
 arr.map(function(item,index){
-	return  
+​	return  
 })
 可以修改或者增加原有数组，并且返回数组,不改变原有数组
 
 arr.filter(function(item,index){
-	return item>3
+​	return item>3
 })
 可以用来筛选过滤出数组,并且将其返回不改变原有数组
 
@@ -2151,7 +2160,7 @@ Number.isInteger()用来判断一个数值是否为整数。
 匿名函数可以改写为 箭头函数
 
 let fn = () => {
-    console.log(this);
+​    console.log(this);
 }
 
 形参只有一个的时候 可以省略掉小括号
@@ -2174,8 +2183,8 @@ let fn = () => {
 由于扩展运算符可以展开数组，所以不再需要apply方法，将数组转为函数的参数
 
 扩展运算符 ...
-	展开数组、伪数组
-	
+​	展开数组、伪数组
+​	
 扩展运算符的应用
 （1）复制数组
  (2)合并数组  浅拷贝
@@ -2197,18 +2206,18 @@ Array.of()  Array.of方法用于将一组值，转换为数组。
 
 数组去重
 let a = (...value) => {let b = new Set([...value]);console.log([...b])}
-	let c = a(1,2,3,4,5,6,7,8,9,10,1,2,2,2,3);
+​	let c = a(1,2,3,4,5,6,7,8,9,10,1,2,2,2,3);
 ```
 
 ## 18.8对象的扩展
 
 ```
 属性的可枚举性和遍历
-    Object.getOwnPropertyDescriptor方法可以获取该属性的描述对象
-    value: 123,
-    writable: true,
-    enumerable: true,
-    configurable: true
+​    Object.getOwnPropertyDescriptor方法可以获取该属性的描述对象
+​    value: 123,
+​    writable: true,
+​    enumerable: true,
+​    configurable: true
 描述对象的enumerable属性，称为“可枚举性”，如果该属性为false，就表示某些操作会忽略当前属性。
 遍历对象的五种方法
 （1）for...in
@@ -2255,7 +2264,7 @@ let a = {};
 a[mySymbol] = 'Hello!';
 // 第二种写法
 let a = {
-  [mySymbol]: 'Hello!'
+[mySymbol]: 'Hello!'
 };
 // 第三种写法
 let a = {};
@@ -2265,15 +2274,15 @@ Object.defineProperty(a, mySymbol, { value: 'Hello!' });
 
     const PROP_NAME = Symbol()
     const PROP_AGE = Symbol()
-
+    
     let obj = {
       [PROP_NAME]: "一斤代码"
     }
     obj[PROP_AGE] = 18
-
+    
     obj[PROP_NAME] // '一斤代码'
     obj[PROP_AGE] // 18
-    
+
 ######属性名的遍历
 有一个Object.getOwnPropertySymbols()方法，可以获取指定对象的所有 Symbol 属性名。该方法返回一个数组，成员是当前对象的所有用作属性名的 Symbol 值。
 
@@ -2291,7 +2300,7 @@ const s = new Set();
 
 可以用来数组去重
 var a = [1,2,2,3,4,5,6,7,8,9,8,7,8];
-	var arr = new Set(a);
+​	var arr = new Set(a);
 ***Array.from方法可以将 Set 结构转为数组。
 
 向 Set 加入值的时候，不会发生类型转换
@@ -2326,18 +2335,18 @@ ES6 原生提供 Proxy 构造函数，用来生成 Proxy 实例。
 var proxy = new Proxy(target, handler);
 
 let obj = {
-	name: 'yj666',
-	age: 22
+​	name: 'yj666',
+​	age: 22
 }
 let pro = new Proxy(obj, {
-	set(target, key, value){
-		console.log(`监听到改变属性${key}的值为${value}`);
-		Reflect.set(target, key, value);
-	},
-	get(target, key){
-		console.log(`监听到获取属性${key}`);
-		return Reflect.get(target, key);
-	}
+​	set(target, key, value){
+​		console.log(`监听到改变属性${key}的值为${value}`);
+​		Reflect.set(target, key, value);
+​	},
+​	get(target, key){
+​		console.log(`监听到获取属性${key}`);
+​		return Reflect.get(target, key);
+​	}
 })
 console.log(pro);
 pro.name = 'lzx';
@@ -2373,22 +2382,24 @@ Promise对象有以下两个特点。
 （2）一旦状态改变，就不会再变，任何时候都可以得到这个结果。pending变为fulfilled和从pending变为rejected。
 （3）.promise构造函数是同步执行的，then方法是异步执行的
 
- 
+
  例子
  var lock = false;
-	var promise = new Promise((resolove,reject) =>{
-		if(lock){
-			resolove();
-		}else{
-			reject();
-		}
+​	var promise = new Promise((resolove,reject) =>{
+​		if(lock){
+​			resolove();
+​		}else{
+​			reject();
+​		}
 
-	})
-	promise.then(() => {
-		console.log('成功')
-	}, ()=>{
-		console.log('失败')
-	})
+```js
+})
+promise.then(() => {
+	console.log('成功')
+}, ()=>{
+	console.log('失败')
+})
+```
 
 3.Promise.prototype.then()  链式操作
 4.Promise.prototype.catch()
@@ -2417,12 +2428,12 @@ NodeList 对象
 一个数据结构只要部署了Symbol.iterator属性，就被视为具有 iterator 接口，就可以用for...of循环遍历它的成员。也就是说，for...of循环内部调用的是数据结构的Symbol.iterator方法。
 
 function iterator(...values){
-	let index = 0;
-	return {
-		next(){
-			return {value: values[index++],done: index > values.length ? true : false}
-		}
-	}
+​	let index = 0;
+​	return {
+​		next(){
+​			return {value: values[index++],done: index > values.length ? true : false}
+​		}
+​	}
 }
 let iter = iterator('赵四', '刘能', '广坤', '李泽欣', '超星空', '巧碧螺');
 console.log(iter.next());
@@ -2436,26 +2447,26 @@ console.log(iter.next());
 
 let arr = ['赵四', '刘能', '广坤', '李泽欣', '超星空', '巧碧螺'];
 for(let i of arr){
-	console.log(i);
+​	console.log(i);
 }
 // 给对象添加iterator接口
 let obj = {
-	name: 1,
-	age: 22,
-	[Symbol.iterator]: function(){
-		let index = 0;
-		let arr = Object.keys(this);
-		return {
-			next: () => {
-				return {value: this[arr[index++]],done: index > arr.length ? true : false};
-			}
-		}
-	}
+​	name: 1,
+​	age: 22,
+​	[Symbol.iterator]: function(){
+​		let index = 0;
+​		let arr = Object.keys(this);
+​		return {
+​			next: () => {
+​				return {value: this[arr[index++]],done: index > arr.length ? true : false};
+​			}
+​		}
+​	}
 }
 for(let i of obj){
-	console.log(i);
+​	console.log(i);
 }
-```
+```js
 
 ## 18.15  Class 类
 
@@ -2465,7 +2476,6 @@ Class 类 就是 构造函数的另外一种写法
 
 继承用到的是 extends 关键字以及super函数
 
-```javascript
 class Person {
     constructor(name, age){
         this.name = name;
@@ -2587,7 +2597,7 @@ async函数会返回一个promise对象，如果function中返回的是一个值
 
 ## 18.18 eventloop
 
-```
+```js
 宏任务  \
 	当前调用栈中执行的代码成为宏任务 定时器 I/O、setTimeout、setInterval、				setImmediate、requestAnimationFrame
 微任务 
@@ -2630,7 +2640,7 @@ async函数会返回一个promise对象，如果function中返回的是一个值
 
 ## 19.2 发送同步请求
 
-```
+```js
 var http = new XMLHttpRequest();   生成一个实例
 http.open('method','url',false)  最后一个参数控制同步异步
 http.send();   发送请求
@@ -2672,16 +2682,16 @@ ET的数据在 URL 中对所有人都是可见的。POST的数据不会显示在
 
 跨域解决方案：
 
-​		1. JSONP
+		1. JSONP
 
-​		2. CORS（跨域资源访问）
+		2. CORS（跨域资源访问）
 
-​		3. 服务器代理
+		3. 服务器代理
 ```
 
 ## 19.3异步请求
 
-```
+```js
 状态码
 1**：请求收到，继续处理
 2**：操作成功收到，分析、接受
@@ -2712,7 +2722,7 @@ status  状态码
 
 ## 19.4JSON
 
-```
+```js
 JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。
 
 要实现从JSON字符串转换为JS对象，使用 JSON.parse() 方法：
@@ -2729,7 +2739,7 @@ var json = http.response;
 
 ## 19.5 JSONP
 
-```
+```js
 jsonp的核心原理就是目标页面回调本地页面的方法,并带入参数
 只能发送get请求
 jsonp的原理：script标签具有跨域性，可以利用Script标签的src属性发送跨域请求，获取相应数据
@@ -2755,7 +2765,7 @@ script的src属性设置接口地址
 
 ## 19.7 发送post请求
 
-```
+```js
 var http = new XMLHttpRequest();
 				http.onreadystatechange = function(){
 					if(http.readyState == 4){
@@ -2781,7 +2791,7 @@ text/xml    multipart/form-data
 
 ## 19.8 jqury AJAX
 
-```
+```js
 var option = {
     url: 请求地址,
     type: 请求方式 GET POST,
@@ -2872,7 +2882,7 @@ F却是浏览器的本能，无论是否开启JS，都可以提交表单；
 
 ## 19.9 cookie localStorage sessionStorage
 
-```
+```js
 document.cookie = 'username=1;expires='+ date.toUTCString();
 document.cookie = 'password=sdadjajdal'
 
@@ -3138,7 +3148,7 @@ module.exports = {
 
 ## 4.CMD
 
-```
+```js
 规范是  sea.js
 
 define(function(require,exports,module){
@@ -3172,7 +3182,7 @@ z-index正值 > z-index:auto 或等于0 >行内>浮动>块级>z-index负>backgro
 
 ## 20.2遍历的对比
 
-```
+```js
 for循环 麻烦
 forEach方法。 无法中途跳出forEach循环，break命令或return命令都不能奏效。
 for in方法  数组的键名是数字，但是for...in循环是以字符串作为键名“0”、“1”、“2”等等。
@@ -3200,7 +3210,7 @@ for...of   有着同for...in一样的简洁语法，但是没有for...in那些�
 
 ## 20.5找出出现次数最多的一个数
 
-```
+```js
 let a = [1,2,3,4,4,5,8,4,3,2,7,1,2,1,2,3,4,2,2];
 	let b = (...value) => {let c = new Set([...value]);return c};
 	let d = b(...a);
@@ -3248,7 +3258,7 @@ let a = [1,2,3,4,4,5,8,4,3,2,7,1,2,1,2,3,4,2,2];
 
 ## 20.7 innerhtml 和 innertext  css
 
-```
+```c&#39;s
 innerHTML指的是从对象的起始位置到终止位置的全部内容,包括Html标签。可以读取标签
 innerText   指的是从起始位置到终止位置的内容,但它去除Html标签。不能du'q
 outerHTML指的是除了包含innerHTML的全部内容外, 还包含对象标签本身。
@@ -3288,14 +3298,9 @@ div{
 定义混合用. 
 ```
 
-# 二十四。github
+## 20.9Blob转化
 
 ```
-删除文件
-git clone 地址  
-手动删除 
-git add .
-git commit -m 'des'
-git push
+var reader = new FileReader(); reader.onload = function(event){ var content = reader.result;//内容就在这里 }; reader.readAsText(blob);
 ```
 

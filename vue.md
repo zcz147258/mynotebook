@@ -62,7 +62,7 @@ Style:样式
 
 ## 1.7创建vue代码
 
-```
+```vue
 let ap = new Vue({
             el: '#app',  //挂载的函数
             data: {   //渲染的数据
@@ -83,7 +83,7 @@ let ap = new Vue({
 
 # 2.VUE指令
 
-```
+```vue
 一.数据绑定
 1.1 v-text  v-text主要用来更新textContent，可以等同于JS的text属性。
 	<span v-text="msg"></span>
@@ -120,7 +120,7 @@ v-on v-on主要用来监听dom事件，以便执行一些代码块。表达式�
 
 # 3.修饰符
 
-```
+```vue
 v-model修饰符、
 
 <1> .lazy 默认情况下，v-model同步输入框的值和数据。可以通过这个修饰符，转变为在change事件再同步。
@@ -160,7 +160,7 @@ v-model修饰符、
 
 ## 4.2用法
 
-```
+```vue
 <span>年龄: </span><span>{{ age }}</span>
     <!--<span>年龄: </span><span>{{ age() }}</span>-->
 new Vue({
@@ -208,7 +208,7 @@ Vue.filter('adj',(num,n)=>{
 
 ## 5.2局部过滤的写法
 
-```
+```vue
 {{ num | adj(2) }} //可以进行多次过滤
 filters: {
             adj(num,n) {
@@ -223,7 +223,7 @@ filters: {
 
 ## 6.1事件的三要素
 
-```
+```vue
 事件源 时间类型  事件处理函数(监听器)
 鼠标事件：click，dblclick，mouseover，mouseout，mouseenter，mouseleave，mousedown，mousemove，mouseup
 键盘事件：
@@ -237,17 +237,6 @@ ui事件：scroll，resize，load，unload
 	change: 当表单组的内容发生改变且失焦时才触发
 	submit：作用的对象只能是form
 	input: input和keypress都是输入字符时触发该事件。区别：input不能获取字符编码，而keypress可以通过事件对象e.keyCode获取。
-	
-	
-	KeyPress主要用来捕获数字(注意：包括Shift+数字的符号)、字母（注意：包括大小写）、小键盘等除了F1-12、SHIFT、Alt、Ctrl、Insert、Home、PgUp、Delete、End、PgDn、ScrollLock、Pause、NumLock、{菜单键}、{开始键}和方向键外的ANSI字符
-KeyDown 和KeyUp 通常可以捕获键盘除了PrScrn所有按键(这里不讨论特殊键盘的特殊键）
-KeyPress 只能捕获单个字符
-KeyDown 和KeyUp 可以捕获组合键。
-KeyPress 可以捕获单个字符的大小写
-KeyDown和KeyUp 对于单个字符捕获的KeyValue 都是一个值，也就是不能判断单个字符的大小写。
-KeyPress 不区分小键盘和主键盘的数字字符。
-KeyDown 和KeyUp 区分小键盘和主键盘的数字字符。
-其中PrScrn 按键KeyPress、KeyDown和KeyUp 都不能捕获。
 
 ```
 
@@ -260,7 +249,7 @@ KeyDown 和KeyUp 区分小键盘和主键盘的数字字符。
 
 ## 6.3时间修饰符
 
-```
+```vue
 事件修饰符
 .stop 阻止事件继续传播
 .prevent 事件不再重载页面
@@ -272,7 +261,7 @@ KeyDown 和KeyUp 区分小键盘和主键盘的数字字符。
 
 ## 6.4按键修饰符
 
-```
+```vue
 enter
 tab
 delete
@@ -318,7 +307,7 @@ Vue-cli是快速构建这个单页应用的脚手架，这个可是官方的。
 
 vue-cli是脚手架工具，其作用就是用配置好的模板迅速搭建起一个项目工程来
 
-```
+```vue
 1.使用npm全局安装webpack：使用 webpack -v 检查是否成功
 npm install webpack -g
 2.安装 VUE-cli  使用 vue -V 检查
@@ -360,7 +349,7 @@ npm run dev
 
 ## 8.1.定义组件
 
-```
+```vue
 
 
  let HomeHeader = {
@@ -377,7 +366,7 @@ npm run dev
 
 ## 8.2.注册组件
 
-```
+```vue
 1.全局注册
 Vue.component('home-header',HomeHeader)
 2.局部注册
@@ -403,7 +392,7 @@ Vue.component('home-header',HomeHeader)
 
 ## 8.4 data
 
-```
+```vue
 在组件中定义data时，data必须是使用function的方式来定义的。
 let HomeHeader = {
         //局部组件
@@ -430,7 +419,7 @@ let HomeHeader = {
 
 ### 8.6.1 父组件向子组件传递以及验证
 
-```
+```vue
 <comment :aaa="aaa"></comment>
 //父组件向子组件传值
         props: ['aaa'],
@@ -456,7 +445,7 @@ props验证方法二
 
 ### 8.6.2 *子组件向父组件传递
 
-```
+```vue
 第一步 在父组件自定义一个事件
 <submit  @myevent="passdata"></submit>
 第二步骤  子组件里面调用 click 相应按钮的函数 
@@ -488,7 +477,7 @@ data() {
 <script src="https://cdn.jsdelivr.net/npm/vue-bus/dist/vue-bus.js"></script>
 引入vue-bus文件  基于 vue
 
-```
+```vue
  1.发送数据
 send() {
                 // this.$emit('myevent',this.text);
@@ -525,7 +514,7 @@ Vue的slot，是组件的一块HTML模版，这块模版由使用组件者即父
 
 ## 10.1slot的使用
 
-```
+```vue
 slot的用法可以分为三类，分别是默认插槽、具名插槽和作用域插槽
 
 插槽用<slot>标签来确定渲染的位置，里面放如果父组件没传内容时的后备内容
@@ -554,7 +543,7 @@ slot的用法可以分为三类，分别是默认插槽、具名插槽和作用�
 
 # 12.生命周期钩子
 
-```
+```vue
 Vue 实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载Dom→渲染、更新→渲染、卸载等一系列过程，我们称这是 Vue 的生命周期。通俗说就是Vue 实例从创建到销毁的过程，就是生命周期。就像人从生到死的过程。
 在Vue的整个生命周期中，它提供了一些生命周期钩子，给了我们执行自定义逻辑的机会。所谓的生命周期钩子，就是一些函数，为我们提供了一个编写函数的机会，可以在这个函数中编写代码，来完成某些功能。
 beforeCreate	组件实例刚刚被创建，组件属性计算之前，如data属性
@@ -573,7 +562,7 @@ beforeDestroy			组件销毁前调用
 
 # 13.mvvm思想
 
-```
+```vue
 mvvm是一种思想，是我们编程的一种思想，源于后台语言的mvc
 •m：model，模型，就是数据java bean setXxx getXxx
 •v：view，视图，就是html结构，就是界面
@@ -588,7 +577,7 @@ v-model
 
 # 14.动态组建
 
-```
+```vue
 动态组件的实现很简单，就是使用保留的  <component>元素，动态地绑定到它的 is 特性：根据 v-bind:is="组件名" 中的组件名去自动匹配组件，如果匹配不到则不显示。
 <component :is='组件名'></component>
 
@@ -604,7 +593,7 @@ v-model
 
 ## 15.1过渡
 
-```
+```vue
 Vue 提供了 transition 的封装组件，在下列情形中，可以给任何元素和组件添加 entering/leaving 过渡
 
 过渡的应用
@@ -656,7 +645,7 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 
 ## 15.2动画
 
-```
+```vue
 用法同CSS过渡。区别是动画中 v-enter 类名在节点插入 DOM 后不会立即删除，而是在 animationend 事件触发时删除。
 <transition name="bonce">
 		<div class="box" v-show="show"></div>
@@ -699,7 +688,7 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 
 5.访问路由设置
 
-```
+```vue
  引入文件
  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
 <script src="https://cdn.bootcss.com/vue-router/3.1.3/vue-router.min.js"></script>
@@ -743,7 +732,7 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 
 ## 16.2动态路由
 
-```
+```vue
 我们经常需要把某种模式匹配到的所有路由，全都映射到同个组件。例如，我们有一个 User 组件，对于所有 ID 各不相同的用户，都要使用这个组件来渲染。那么，我们可以在vue-router 的路由路径中使用“动态路径参数”来达到这个效果。
 
 在vue-router中，要实现动态路由，从两个方面出发：
@@ -775,223 +764,9 @@ mounted(){
             path: '/home/:id',
             component: Home,
         },
-```
-
-## 16.3嵌套路由
-
-```
- routes: [{
-                path: '/',
-                redirect: '/home'/*重定向*/
-            },
-            {
-            path: '/home',
-            component: home,
-            },
-            {
-            path: '/day',
-            component: day,
-            children: [
-                {
-                    path: '/day/foods',
-                    component: detail
-                },
-            ]
-            },
-        ]
-```
-
-## 16.4命名路由
-
-```
-有时候，通过一个名称来标识一个路由显得更方便一些，特别是在链接一个路由，或者是执行一些跳转的时候。你可以在创建 Router 实例的时候，在 routes 配置中给某个路由设置名称name。
-
-注意：此时的to属性前边需加一个冒号“:”，路径参数写在params属性中。
-
-        <!--<router-link :to="{path:'/list/foods'}">美食</router-link>&lt;!&ndash;如果写path，后面就不能使用params和query&ndash;&gt;
-
-
-{
-                    path: '/day/foods',
-                    name: 'foods',
-                    component: detail
-                },
-1.第一种传值传参                
-<li><router-link :to="{name:'foods',params:{id: '1'}}">食物</router-link></li>
-
-<li><router-link :to="{name:'foods',params:{id: '1'},query:{ name: '张三'}}">食物</router-link></li>
-2.1.第二种传值传参    
-<router-link :to="{path:'/list/foods/foods?id=394738'}">美食</router-link>-->  
-<li><router-link :to="{path:'/day/foods?id=123456'}">食物</router-link></li>
-
-```
-
-## 16.5编程式路由
-
-```
-除了使用 <router-link> 创建 a 标签来定义导航链接，我们还可以借助 router 的实例方法，通过编写代码来实现导航。
-
-语法：（此方法会向history栈添加记录，即当用户点击浏览器后退按钮时，则会回到之前的URL）
-
-router.push({name: 'user',params:{userId: 123}})
-```
-
-## 16.6命名视图
-
-```
-有时候想同时 (同级) 展示多个视图，而不是嵌套展示，例如创建一个布局，有 sidebar (侧导航) 和 main (主内容) 两个视图，这个时候命名视图就派上用场了。你可以在界面中拥有多个单独命名的视图，而不是只有一个单独的出口。如果 router-view 没有设置名字，那么默认为 default。
-
-给router-view添加属性name，并设置值
-一个视图使用一个组件渲染，因此对于同个路由，多个视图就需要多个组件。确保正确使用 components 配置 (带上 s)：
-```
-
-## 16.7重定向
-
-```
-重定向，英文redirect。比如，去浏览淘宝的时候，点击购物车，然后它并没有进入购物车页面，而是进入了登录页面，其实，这个过程就是重定向。换言之，我本来访问的是a页面，结果跳转到b页面。
-
-重定向也是通过 routes 配置来完成。重定向的目标可以是路径。
-```
-
-# 17.axios
-
-```
-Axios是一个基于Promise的HTTP库，可在浏览器和node.js中使用。它的使用方法和Jquery Ajax技术的使用方法大致一致，只有个别参数不同。
-
-url	用于请求的服务器 URL
-method	创建请求时使用的方法，默认是get。其他请求方法有：request、delete、head、post、put、patch
-baseURL	可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL，将自动加在 `url` 前面，除非 `url` 是一个绝对 URL.
-
-data	是作为请求主体被发送的数据
-responseType	表示服务器响应的数据类型，可以是 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'。默认为json
-
-
-```
-
-# 18.VUex
-
-## 1.state
-
-```
-1.安装
-cnpm i vuex -S
-
-2.创建js文件
-import Vue from 'vue'
-import Vuex from 'vuex'
-Vue.use(Vuex)
-
-const state = {
-	city:'xxx'
-}
-
-export default new Vuex.Store({
-	state
-})
-3.全局引入数据注册
-import store from './store'
-new Vue({
-    ...
-    store,//注册数据仓库
-    ...
+        //路由传值
+        this.$router.push({
+    path: "/login?uname=" + this.userName
 });
-4.使用
-import { mapState } from 'vuex'
-5..再在该组件中添加计算属性  数据渲染
-export default {
-    computed:{
-    	...mapState(['city'])
-    }
-}
-```
-
-## 2.使用mutations
-
-```
-修改里面的数据
-1.定义方法
-const mutations = {//mutation用来修改state中的数据
-    changeCity(state,cityName){
-    	state.city = cityName
-    }
-};
-
-export default new Vuex.Store({//抛出
-    state,
-    mutations
-})
-2.在组件中调用修改数据的方法
-
-import { mapMutations } from 'vuex'
-...mapMutations(['changeCity'])
-
-3.methods中调用方法
-methods:{
-    changeCityName(cityName){
-        this.changeCity(cityName);
-        this.$router.push('/');
-    },
-    ...mapMutations(['changeCity'])
-}
-```
-
-
-
-# 19.第一项目遇到的问题
-
-```
-1.图片引入相对地址                                                   已解决
-2.代码校验 顶格写scrpit 标签后的空格 引入文件引号的空格                   已解决
-3.emmet语法快速创建 link:favicon	已解决
-4.引入外部字体 解压失败
-5.from后面加空格
-6.组件的name
-7.装stylus使用
-8.swiper插件
-9.函数前面的空格
-10.:key="item.id"  代码校验必须加
-11.样式穿透
-12.引入本地图片加require(''),绝对路劲不需要,src代表@符号
-13.掉块问题
-14.灰色块   解决方法 给一个高0,给一个背景色，padding-bottom 比例 高/宽的百分比
-15.将一维数组拆成二维数组
-16.stylus引入加~@
-17.自定义@ 可以定义路径 在 webpack.base.config
-18.封装一个 stylus overhidden
-19.关闭代码校验
-20.五角星功能的实现
-21.路由的返回 
-22.城市界面滚动条的设置 vue-better-scroll
-23.整合成一个组件
-34.点击切换到当前对应位置 ABC 
-35.vuex
-36.增加本地存储
-37.keep-alive
-38.百度地图
-39.真机测试
-40.搭建环境
-41.Vue父子组件如何双向绑定传值
-42.v-if解决
-43.解决keepalive的缓存 scrolltop
-44.echarts
-45.解决手机无法滚动问题
-46.导航守卫
-
-```
-
-# 20.vue难题
-
-## 1.Vue的路由实现：hash模式 和 history模式
-
-```
-hash模式：
-在浏览器中符号“#”，#以及#后面的字符称之为hash，用window.location.hash读取；
-特点：hash虽然在URL中，但不被包括在HTTP请求中；用来指导浏览器动作，对服务端安全无用，hash不会重加载页面。
-hash 模式下，仅 hash 符号之前的内容会被包含在请求中，如 http://www.xiaogangzai.com，因此对于后端来说，即使没有做到对路由的全覆盖，也不会返回 404 错误。
-
-history模式：
-history采用HTML5的新特性；且提供了两个新方法：pushState（），replaceState（）可以对浏览器历史记录栈进行修改，以及popState事件的监听到状态变更。
-history 模式下，前端的 URL 必须和实际向后端发起请求的 URL 一致，如 http://www.xxx.com/items/id。后端如果缺少对 /items/id 的路由处理，将返回 404 错误。Vue-Router 官网里如此描述：“不过这种模式要玩好，还需要后台配置支持……所以呢，你要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 index.html 页面，这个页面就是你 app 依赖的页面。
-
 ```
 
